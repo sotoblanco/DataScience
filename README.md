@@ -25,8 +25,10 @@ This is a collection of projects that shows my knowledge and skill set in differ
 # Machine Learning
 
 * Decision tree
-* Baggued tree
+* Bagged tree
 * Random Forest
 * Boosting tree
+* SVM
+
 
 
