@@ -5,28 +5,28 @@ This is a collection of projects that shows my knowledge and skill set in differ
 
 # Software
 
-*_R
+* R
 * Python
-*SQL
+* SQL
 
 # Type of projects:
 
--Stock market prediction
--Golf predictions
+* Stock market prediction
+* Golf predictions
 
 # Statistical analysis
 
--A/B testing
--Anova
--Linear regression
--Logistic regression
--Montecarlo simulation
+* A/B testing
+* Anova
+* Linear regression
+* Logistic regression
+* Montecarlo simulation
 
 # Machine Learning
 
--Decision tree
--Baggued tree
--Random Forest
--Boosting tree
+* Decision tree
+* Baggued tree
+* Random Forest
+* Boosting tree
 
 
