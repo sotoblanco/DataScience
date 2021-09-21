@@ -14,6 +14,7 @@ This is a collection of projects that shows my knowledge and skill set in differ
 * Futures Market Profile
 * Stock market prediction
 * Golf predictions
+* Cryptocurrencies
 
 # Statistical analysis
 
