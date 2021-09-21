@@ -11,6 +11,7 @@ This is a collection of projects that shows my knowledge and skill set in differ
 
 # Type of projects:
 
+* Futures Market Profile
 * Stock market prediction
 * Golf predictions
 
