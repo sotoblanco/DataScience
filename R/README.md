@@ -18,7 +18,7 @@ R programing by calculating Market Profile data which is an intraday charting te
  
 ## Resources:
 * Market profile on the Nasdaq Index
-  *https://en.wikipedia.org/wiki/Market_profile
+  * https://en.wikipedia.org/wiki/Market_profile
 * Jim Dalton: https://jimdaltontrading.com/ Discretionary trader on Market Porfile
 * Jim Simmons: https://www.amazon.com/Man-Who-Solved-Market-Revolution-ebook/dp/B07P1NNTSD Quantitative trader
 
