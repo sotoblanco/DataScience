@@ -10,6 +10,7 @@ R programing by calculating Market Profile data which is an intraday charting te
 * __NQ Market Profile.xlsx__: An example on the Nasdaq index to implement this code on historical data
 * __README.md__: What you are reading now
 * __NQ.txt__: Sample historical data on nasdaq
+* __MarketProfile.jpg__: Picture of market profile data 
 
 
 ## Background
