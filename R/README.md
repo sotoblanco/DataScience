@@ -13,12 +13,12 @@ R programing by calculating Market Profile data which is an intraday charting te
 
 
 ## Background
-*Market profile on the Nasdaq Index
-  *https://en.wikipedia.org/wiki/Market_profile
-  
+
  The goal of this code is to get the market profile data points on the historical data to have a source for quantitative evaluation of this way on evaluating the finance data that can be applied to any financial instrument with the right adjustments. Market profile often is seeing and measure by traders like Jim Dalton using their understanding of the market which is helpful when there is a lot of knowledge and great intuition about what's going on in live data, howver with the increase in the quantitative approaches to financial data to analyze predic, and make decision on finacial data having a replicable source of information that can help us track the market, test ideas become and make decision are crucial for the majority of hedge funds.
  
 ## Resources:
+* Market profile on the Nasdaq Index
+  *https://en.wikipedia.org/wiki/Market_profile
 * Jim Dalton: https://jimdaltontrading.com/ Discretionary trader on Market Porfile
 * Jim Simmons: https://www.amazon.com/Man-Who-Solved-Market-Revolution-ebook/dp/B07P1NNTSD Quantitative trader
 
