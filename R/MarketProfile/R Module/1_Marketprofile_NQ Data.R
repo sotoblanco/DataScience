@@ -3,6 +3,8 @@ library(lubridate)
 library(tidyverse)
 source("MarketProfile_Futures.R") # store the functions for futures Marketprofile
 
+# change the file
+
 # futures instrument
 instrument = "NQ"
 dir_main_FRD <- "C:/Users/Pastor/Dropbox/Pastor/data/futures_unadjusted_5"
