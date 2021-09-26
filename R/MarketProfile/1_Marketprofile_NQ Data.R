@@ -113,7 +113,9 @@ df_data_2 <- df_data %>% rename(pClose_touched = pClose, pClose_touched.night = 
 df_data_23 <- df_data_2 %>% mutate(across(c(pClose_touched:pPOC_median.night),~case_when(.!= "0" ~ 1, TRUE ~ 0)))
 
 
+# set the files into a folder
 setwd("C:/Users/Pastor/Dropbox/Pastor/data/MarketProfile_data")
+
 write.csv(df_data_23, "all_data.csv", row.names = FALSE)
 
 # Raw data without the touch data

@@ -1,7 +1,9 @@
-setwd("C:/Users/Pastor/Desktop/stock_market/futures/clean_data")
-df <- read.csv("raw_data.csv")
+path_file_raw_data<- file.path(dirname("C:/Users/Pastor/Dropbox/Pastor/data/MarketProfile_data/.."))
+setwd("C:/Users/Pastor/Dropbox/Pastor/data/MarketProfile_data")
 
-setwd("C:/Users/Pastor/Desktop/stock_market/diff_OHLC")
+
+df <- read.csv(file.path(path_file_raw_data, "raw_data.csv"))
+
 library(tidyverse)
 
 # get the difference between the next period and the previous period
@@ -191,6 +193,8 @@ High$IB_BK_and <- with(High, ifelse(IBH_BK == 1 & IBL_BK == 1, 1, 0))
 
 write.csv(High, "high.csv", row.names = FALSE)
 write.csv(High_dum,"high_dum.csv", row.names = FALSE)
+
+# Get the quantiles
 
 hl_range <- round((Highs[,1:14] - Lows_2[,1:14])/Lows_2[,1:14]*last(Lows_2$Low_A),2)
 
