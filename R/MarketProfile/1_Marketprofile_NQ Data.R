@@ -1,21 +1,23 @@
-setwd("C:/Users/Pastor/Dropbox/Pastor/Rscript")
 library(lubridate)
 library(tidyverse)
-source("MarketProfile_Futures.R") # store the functions for futures Marketprofile
+
+# Define paths to datasets
+path_file_main  <- file.path(dirname("C:/Users/Pastor/Dropbox/Pastor/data/futures_unadjusted_5/.."))
+path_file_update <- file.path(dirname("C:/Users/Pastor/Dropbox/Pastor/data/futures_unadjusted_5_update/.."))
+path_file_mp_funcitons <- file.path(dirname("C:/Users/Pastor/Desktop/stock_market/DataScience/R/MarketProfile/.."))
+
 
 # futures instrument
 instrument = "NQ"
-dir_main_FRD <- "C:/Users/Pastor/Dropbox/Pastor/data/futures_unadjusted_5"
-dir_update_FRD <- "C:/Users/Pastor/Dropbox/Pastor/data/futures_unadjusted_5_update"
 
+source(file.path(path_file_mp_funcitons, "MarketProfile_Futures.R")) # store the functions for futures Marketprofile
+data_main <- sprintf("%s_continuous_UNadjusted_5min.txt", instrument)
+data_update <- sprintf("%s_5-min.txt", instrument)
 
 # Main data
-setwd(dir_main_FRD)
-df <- read.table(sprintf("%s_continuous_UNadjusted_5min.txt", instrument), sep = ",")
+df <- read.table(file.path(path_file_main, data_main), sep = ",")
+df_2 <- read.table(file.path(path_file_update, data_update), sep = ",") # daily updates
 
-# daily updates
-setwd(dir_update_FRD)
-df_2 <- read.table(sprintf("%s_5-min.txt", instrument), sep = ",")
 df <- rbind(df, df_2)
 df <- df[!duplicated(df$V1),]
 
