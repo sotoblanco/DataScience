@@ -24,6 +24,10 @@ df <- df[!duplicated(df$V1),]
 df <- plyr::rename(df, c("V1"= "Date","V2"= "Open", "V3"="High", "V4" = "Low",
                          "V5" = "Close", "V6" = "Volume"))
 
+
+setwd("C:/Users/Pastor/Dropbox/Pastor/data/MarketProfile_data")
+write.csv(df, sprintf("%s_updated.csv", instrument)) # out the data
+
 # We need a dataframe with Date, Open, High, Low, Close, and VOlume variables
 # functions from MarketProfile futures
 
