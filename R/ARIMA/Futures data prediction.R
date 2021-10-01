@@ -1,4 +1,4 @@
-setwd("C:/Users/Pastor/Desktop/stock_market/R scripts")
+setwd("C:/Users/Pastor/Desktop/stock_market/DataScience/R/ARIMA")
 source("arima_functions.R")
 
 library(lubridate)
@@ -10,7 +10,7 @@ path_file_update <- file.path(dirname("C:/Users/Pastor/Dropbox/Pastor/data/futur
 
 
 # futures instrument
-instrument = "ES"
+instrument = "NQ"
 term = 1
 
 data_main <- sprintf("%s_continuous_UNadjusted_5min.txt", instrument)
@@ -39,7 +39,7 @@ df_daily <- df %>% group_by(day_month) %>% summarise(Open = first(Open),
                                                        Volume = sum(Volume))
 
 
-
+## Overall performance of the model
 df_daily_train <- df_daily %>% select(day_month, High, Low)
 
 final <- arima_evaluation(df_daily_train, 50)
@@ -68,7 +68,7 @@ grafical_comparison(predi_arima_high, predi_arima_high$High_actual,
 
 ## Daily predictions
 
-df_daily <- head(df_daily,-1)
+#df_daily <- head(df_daily,-1)
 
 pred_high <- arima_model(df_daily, df_daily$High, term)
 pred_low <- arima_model(df_daily, df_daily$Low, term)

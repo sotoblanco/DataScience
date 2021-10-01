@@ -1,4 +1,4 @@
-setwd("C:/Users/Pastor/Desktop/stock_market/R scripts")
+setwd("C:/Users/Pastor/Desktop/stock_market/DataScience/R/ARIMA")
 source("arima_functions.R")
 
 library(lubridate)
@@ -10,7 +10,7 @@ path_file_update <- file.path(dirname("C:/Users/Pastor/Dropbox/Pastor/data/crypt
 
 
 # futures instrument
-instrument = "ETH"
+instrument = "BTC"
 term = 1
 
 data_main <- sprintf("%s_1hour.txt", instrument)
@@ -69,7 +69,7 @@ grafical_comparison(predi_arima_high, predi_arima_high$High_actual,
 
 
 # daily predictions
-df_daily <- head(df_daily,-1)
+#df_daily <- head(df_daily,-1)
 
 pred_high <- arima_model(df_daily, df_daily$High, term)
 pred_low <- arima_model(df_daily, df_daily$Low, term)
