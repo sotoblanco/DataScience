@@ -1,8 +1,10 @@
-path_file_raw_data<- file.path(dirname("C:/Users/Pastor/Dropbox/Pastor/data/MarketProfile_data/.."))
-setwd("C:/Users/Pastor/Dropbox/Pastor/data/MarketProfile_data")
+instrument = "NQ"
+
+path_file_raw_data<- file.path(dirname(sprintf("C:/Users/Pastor/Dropbox/Pastor/data/MarketProfile_data/%s/..", instrument)))
+setwd(sprintf("C:/Users/Pastor/Dropbox/Pastor/data/MarketProfile_data/%s", instrument))
 
 
-df <- read.csv(file.path(path_file_raw_data, "raw_data.csv"))
+df <- read.csv(file.path(path_file_raw_data, sprintf("%s_raw_data.csv", instrument)))
 
 library(tidyverse)
 

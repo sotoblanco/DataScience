@@ -122,12 +122,12 @@ pred_vs_actual <- function(data, actual_value, pred_value, high_low){
   return(data)
 }
 
-grafical_comparison <- function(data, actual_value, pred_value, High_low){
+grafical_comparison <- function(data, actual_value, pred_value, High_low, instrument){
   
   p <- ggplot(data, aes(x = day_month)) + 
     geom_line(aes(y = actual_value, color = "Actual")) + 
     geom_line(aes(y = pred_value, color = "Predicted"))+
-    ggtitle(sprintf("Predicted vs Actual return from the %s of the day", High_low))
+    ggtitle(sprintf("%s Predicted vs Actual return from the %s of the day", instrument, High_low))
   
   plz <- plotly::ggplotly(p)
   return(plz)

@@ -26,7 +26,7 @@ df <- plyr::rename(df, c("V1"= "Date","V2"= "Open", "V3"="High", "V4" = "Low",
 
 
 setwd("C:/Users/Pastor/Dropbox/Pastor/data/MarketProfile_data")
-write.csv(df, sprintf("%s_updated.csv", instrument)) # out the data
+write.csv(df, sprintf("%s_updated.csv", instrument), row.names = FALSE) # out the data
 
 # We need a dataframe with Date, Open, High, Low, Close, and VOlume variables
 # functions from MarketProfile futures
@@ -117,16 +117,28 @@ df_data_2 <- df_data %>% rename(pClose_touched = pClose, pClose_touched.night = 
 df_data_23 <- df_data_2 %>% mutate(across(c(pClose_touched:pPOC_median.night),~case_when(.!= "0" ~ 1, TRUE ~ 0)))
 
 
+# POC TRADING SYSTEM
+
+## The distance is below or above the overnight POC
+
+df_data_23$poc_loc <- with(yest_range, ifelse(dplyr::lag(POC.night) > Open, "Up", "Down"))
+
+df_data_23$open_low_dist <- with(yest_range, abs(Open-Low))
+
+## MAE Maximun adverse execution (If the OPEN is below the POC we evaluate as the low of the day)
+
+df_data_23$MAE <- with(df_data_23, ifelse(poc_loc == "Up", open_low_dist, open_high_dist))
+
+## MFE Maximun Favorable excursion (If the OPEN is below the POC we evaluate as the high of the day)
+
+df_data_23$MFE <- with(df_data_23, ifelse(poc_loc == "Up", open_high_dist, open_low_dist))
+
+
 # set the files into a folder
-setwd("C:/Users/Pastor/Dropbox/Pastor/data/MarketProfile_data")
 
-write.csv(df_data_23, "all_data.csv", row.names = FALSE)
-
-# Raw data without the touch data
-write.csv(raw_data, "raw_data.csv", row.names = FALSE)
-
-# use touch data for power bi model after step 5
-write.csv(df_data, "touch data.csv", row.names = FALSE)
-
-write.csv(yest_range, "yest_range.csv", row.names = FALSE)
+setwd(sprintf("C:/Users/Pastor/Dropbox/Pastor/data/MarketProfile_data/%s", instrument))
+write.csv(df_data_23, sprintf("%s_all_data.csv", instrument), row.names = FALSE) # out the data
+write.csv(raw_data, sprintf("%s_raw_data.csv", instrument), row.names = FALSE) # out the data
+write.csv(df_data, sprintf("%s_touch_data.csv", instrument), row.names = FALSE) # out the data
+write.csv(df_data_23, sprintf("%s_yest_range.csv", instrument), row.names = FALSE) # out the data
 
