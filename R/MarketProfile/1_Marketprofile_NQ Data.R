@@ -1,45 +1,15 @@
 library(lubridate)
 library(tidyverse)
 
-market_instrument = "Crypto"
-instrument = "BTC"
-
-if (market_instrument == "Futures") {
-  path_file_main  <- file.path(dirname("C:/Users/Pastor/Dropbox/Pastor/data/futures_unadjusted_5/.."))
-  path_file_update <- file.path(dirname("C:/Users/Pastor/Dropbox/Pastor/data/futures_unadjusted_5_update/.."))
-  data_main <- sprintf("%s_continuous_UNadjusted_5min.txt", instrument)
-  data_update <- sprintf("%s_5-min.txt", instrument)
-}
-
-if (market_instrument == "Crypto") {
-  
-  path_file_main  <- file.path(dirname("C:/Users/Pastor/Dropbox/Pastor/data/crypto-active_5min/.."))
-  path_file_update <- file.path(dirname("C:/Users/Pastor/Dropbox/Pastor/data/crypto-active_week-update_5-min/.."))
-  data_main <- sprintf("%s_5min.txt", instrument)
-  data_update <- sprintf("%s_5-min.txt", instrument)
-  
-}
-
+instrument = "NQ"
 path_file_mp_funcitons <- file.path(dirname("C:/Users/Pastor/Desktop/stock_market/DataScience/R/MarketProfile/.."))
 source(file.path(path_file_mp_funcitons, "MarketProfile_Futures.R")) # store the functions for futures Marketprofile
 
 # Main data
-df <- read.table(file.path(path_file_main, data_main), sep = ",")
-df_2 <- read.table(file.path(path_file_update, data_update), sep = ",") # daily updates
+path_file_update <- file.path(dirname("C:/Users/Pastor/Dropbox/Pastor/data/MarketProfile_data/.."))
+data_main <- sprintf("%s_updated.csv", instrument)
 
-df <- rbind(df, df_2)
-df <- df[!duplicated(df$V1),]
-
-df <- plyr::rename(df, c("V1"= "Date","V2"= "Open", "V3"="High", "V4" = "Low",
-                         "V5" = "Close", "V6" = "Volume"))
-
-if (market_instrument == "Crypto") {
-  df$Date  <- ymd_hms(df$Date)
-  df$Date <- df$Date - hours(4)
-}
-
-setwd("C:/Users/Pastor/Dropbox/Pastor/data/MarketProfile_data")
-write.csv(df, sprintf("%s_updated.csv", instrument), row.names = FALSE) # out the data
+df <- read.csv(file.path(path_file_update, data_main))
 
 # We need a dataframe with Date, Open, High, Low, Close, and VOlume variables
 # functions from MarketProfile futures
@@ -112,11 +82,12 @@ yest_range <- yest_range %>% mutate(dist_poc_night_open_cat = case_when(dist_poc
 
 yest_range$open_close_dist <- round((yest_range$Close - yest_range$Open)/yest_range$Open * last(yest_range$Open),2)
 yest_range$open_high_dist <- round((yest_range$High-yest_range$Open)/yest_range$Open * last(yest_range$Open),2)
+yest_range$open_low_dist <- round((yest_range$Low-yest_range$Open)/yest_range$Open * last(yest_range$Open), 2)
 
 
 df_data <- yest_range %>% select(day_month, range:pPOC_median, pClose.night:A_higher_B, trend, Lowest_day,
                                  Highest_day, dist_poc_night_open, dist_poc_open, dist_poc_night_open_cat,
-                                 dist_poc_open_cat, open_close_dist, open_high_dist)
+                                 dist_poc_open_cat, open_close_dist, open_high_dist, open_low_dist)
 
 
 raw_data <- yest_range %>% select(day_month, High_A:Low_N, Low, High)
@@ -135,8 +106,6 @@ df_data_23 <- df_data_2 %>% mutate(across(c(pClose_touched:pPOC_median.night),~c
 ## The distance is below or above the overnight POC
 
 df_data_23$poc_loc <- with(yest_range, ifelse(dplyr::lag(POC.night) > Open, "Up", "Down"))
-
-df_data_23$open_low_dist <- with(yest_range, round((Open-Low)/Open*last(Open)),2)
 
 ## MAE Maximun adverse execution (If the OPEN is below the POC we evaluate as the low of the day)
 
