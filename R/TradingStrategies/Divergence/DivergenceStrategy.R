@@ -2,6 +2,7 @@ library(TTR)
 library(tidyverse)
 
 # futures instrument
+## get data
 instrument = "BTC"
 
 path_file_update <- file.path(dirname("C:/Users/Pastor/Dropbox/Pastor/data/MarketProfile_data/.."))

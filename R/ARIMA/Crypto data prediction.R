@@ -42,7 +42,7 @@ df_daily <- df %>% group_by(day_month) %>% summarise(Open = first(Open),
 # Metric performance
 df_daily_train <- df_daily %>% select(day_month, High, Low)
 
-final <- arima_evaluation(df_daily_train, 50)
+final <- arima_evaluation(df_daily_train, 15)
 
 final <- final[order(final$day_month),]
 
@@ -66,6 +66,9 @@ predi_arima_low$diff_pred_actual <- predi_arima_low$Low_actual - predi_arima_low
 grafical_comparison(predi_arima_high, predi_arima_high$High_actual,
                     predi_arima_high$High_pred, High_low = "High")
 
+
+cat("Accuracy High of the day",round(sum(predi_arima_high$accuracy == "Yes", na.rm = TRUE)/nrow(predi_arima_high),4)*100,"%")
+cat("Accuracy Low of the day",round(sum(predi_arima_low$accuracy == "Yes", na.rm = TRUE)/nrow(predi_arima_low),4)*100, "%")
 
 
 # daily predictions
