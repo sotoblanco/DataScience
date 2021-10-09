@@ -1,18 +1,30 @@
 library(lubridate)
 library(tidyverse)
 
-# Define paths to datasets
-path_file_main  <- file.path(dirname("C:/Users/Pastor/Dropbox/Pastor/data/futures_unadjusted_5/.."))
-path_file_update <- file.path(dirname("C:/Users/Pastor/Dropbox/Pastor/data/futures_unadjusted_5_update/.."))
+market_instrument = "Crypto"
+instrument = "BTC"
+
+
+if (market_instrument == "Futures") {
+  path_file_main  <- file.path(dirname("C:/Users/Pastor/Dropbox/Pastor/data/futures_unadjusted_5/.."))
+  path_file_update <- file.path(dirname("C:/Users/Pastor/Dropbox/Pastor/data/futures_unadjusted_5_update/.."))
+  data_main <- sprintf("%s_continuous_UNadjusted_5min.txt", instrument)
+  data_update <- sprintf("%s_5-min.txt", instrument)
+  
+  
+}
+
+if (market_instrument == "Crypto") {
+  
+  path_file_main  <- file.path(dirname("C:/Users/Pastor/Dropbox/Pastor/data/crypto-active_5min/.."))
+  path_file_update <- file.path(dirname("C:/Users/Pastor/Dropbox/Pastor/data/crypto-active_week-update_5-min/.."))
+  data_main <- sprintf("%s_5min.txt", instrument)
+  data_update <- sprintf("%s_5-min.txt", instrument)
+  
+}
+
 path_file_mp_funcitons <- file.path(dirname("C:/Users/Pastor/Desktop/stock_market/DataScience/R/MarketProfile/.."))
-
-
-# futures instrument
-instrument = "ES"
-
 source(file.path(path_file_mp_funcitons, "MarketProfile_Futures.R")) # store the functions for futures Marketprofile
-data_main <- sprintf("%s_continuous_UNadjusted_5min.txt", instrument)
-data_update <- sprintf("%s_5-min.txt", instrument)
 
 # Main data
 df <- read.table(file.path(path_file_main, data_main), sep = ",")
@@ -123,7 +135,7 @@ df_data_23 <- df_data_2 %>% mutate(across(c(pClose_touched:pPOC_median.night),~c
 
 df_data_23$poc_loc <- with(yest_range, ifelse(dplyr::lag(POC.night) > Open, "Up", "Down"))
 
-df_data_23$open_low_dist <- with(yest_range, abs(Open-Low))
+df_data_23$open_low_dist <- with(yest_range, round((Open-Low)/Open*last(Open)),2)
 
 ## MAE Maximun adverse execution (If the OPEN is below the POC we evaluate as the low of the day)
 
