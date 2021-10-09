@@ -1,0 +1,9 @@
+"day_month","instrument","High_actual","High_pred","Low_actual","Low_pred","High_direction_actual","High_direction_pred","Low_direction_actual","Low_direction_pred"
+2021-09-30,"BTC",44122,43727.75,42720.45,40918.8,NA,NA,NA,NA
+2021-10-01,"BTC",48500,44069.62,43464.05,42543.54,"Higher High","Lower High","Higher Low","Lower Low"
+2021-10-03,"BTC",48323.59,48629.09,47374,43320.16,"Lower High","Higher High","Higher Low","Lower Low"
+2021-10-04,"BTC",49811,48566.1,46865.8,46971.41,"Higher High","Higher High","Lower Low","Lower Low"
+2021-10-05,"BTC",51922,49846.15,49096.84,46767.72,"Higher High","Higher High","Higher Low","Lower Low"
+2021-10-06,"BTC",55770,52256.21,50366.4,48886.28,"Higher High","Higher High","Higher Low","Lower Low"
+2021-10-07,"BTC",55246.41,56070.02,53289.57,50229.61,"Lower High","Higher High","Higher Low","Lower Low"
+2021-10-08,"BTC",NA,55370.4869008824,NA,53033.0251596313,NA,"Higher High",NA,"Lower Low"

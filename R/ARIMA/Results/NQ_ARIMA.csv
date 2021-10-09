@@ -1,0 +1,9 @@
+"day_month","instrument","High_actual","High_pred","Low_actual","Low_pred","High_direction_actual","High_direction_pred","Low_direction_actual","Low_direction_pred"
+2021-09-29,"NQ",14926,15181.86,14711,14683.07,NA,NA,NA,NA
+2021-09-30,"NQ",14883.5,14879.48,14574.5,14689.95,"Lower High","Lower High","Lower Low","Lower Low"
+2021-10-01,"NQ",14818,14828.88,14537,14458.22,"Lower High","Lower High","Lower Low","Lower Low"
+2021-10-04,"NQ",14751.5,14751.26,14367.75,14462.21,"Lower High","Lower High","Lower Low","Lower Low"
+2021-10-05,"NQ",14754.75,14661.96,14452.5,14215.22,"Higher High","Lower High","Higher Low","Lower Low"
+2021-10-06,"NQ",14888,14643.92,14422.5,14344.38,"Higher High","Lower High","Lower Low","Lower Low"
+2021-10-07,"NQ",15001.25,14830.1,14832.25,14373.63,"Higher High","Lower High","Higher Low","Lower Low"
+2021-10-08,"NQ",NA,15013.1061929979,NA,14882.2024666685,NA,"Higher High",NA,"Higher Low"

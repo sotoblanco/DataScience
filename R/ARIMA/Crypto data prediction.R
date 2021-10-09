@@ -10,7 +10,7 @@ path_file_update <- file.path(dirname("C:/Users/Pastor/Dropbox/Pastor/data/crypt
 
 
 # futures instrument
-instrument = "BTC"
+instrument = "ETH"
 term = 1
 
 data_main <- sprintf("%s_1hour.txt", instrument)
@@ -69,6 +69,18 @@ grafical_comparison(predi_arima_high, predi_arima_high$High_actual,
 
 cat("Accuracy High of the day",round(sum(predi_arima_high$accuracy == "Yes", na.rm = TRUE)/nrow(predi_arima_high),4)*100,"%")
 cat("Accuracy Low of the day",round(sum(predi_arima_low$accuracy == "Yes", na.rm = TRUE)/nrow(predi_arima_low),4)*100, "%")
+
+
+pred_update <- predi_arima_high
+pred_update$Low_actual <- predi_arima_low$Low_actual
+pred_update$Low_pred <- round(predi_arima_low$Low_pred,2)
+pred_update$instrument <- instrument
+pred_update$High_pred <- round(pred_update$High_pred,2)
+
+pred_update <- pred_update %>% select(day_month, instrument, High_actual,High_pred, Low_actual, Low_pred )
+
+setwd("C:/Users/Pastor/Dropbox/Pastor/data/MarketProfile_data/ARIMA")
+write.csv(pred_update, sprintf("%s_ARIMA.csv", instrument), row.names = FALSE) # out the data
 
 
 # daily predictions

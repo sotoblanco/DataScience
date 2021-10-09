@@ -1,0 +1,9 @@
+"day_month","instrument","High_actual","High_pred","Low_actual","Low_pred","High_direction_actual","High_direction_pred","Low_direction_actual","Low_direction_pred"
+2021-09-29,"ES",4378.75,4446.06,4344.25,4326.67,NA,NA,NA,NA
+2021-09-30,"ES",4389,4374.07,4268.75,4346.67,"Higher High","Lower High","Lower Low","Higher Low"
+2021-10-01,"ES",4365.75,4381.34,4260,4261.46,"Lower High","Lower High","Lower Low","Lower Low"
+2021-10-04,"ES",4349.75,4353.9,4267.5,4260.46,"Lower High","Lower High","Higher Low","Higher Low"
+2021-10-05,"ES",4359.75,4334.9,4283.5,4268.82,"Higher High","Lower High","Higher Low","Higher Low"
+2021-10-06,"ES",4382.75,4342.3,4273.75,4285.6,"Higher High","Lower High","Lower Low","Higher Low"
+2021-10-07,"ES",4421.5,4369.7,4369.5,4273.16,"Higher High","Lower High","Higher Low","Lower Low"
+2021-10-08,"ES",NA,4433.29823796124,NA,4379.83769404526,NA,"Higher High",NA,"Higher Low"

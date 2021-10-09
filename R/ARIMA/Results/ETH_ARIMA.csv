@@ -1,0 +1,9 @@
+"day_month","instrument","High_actual","High_pred","Low_actual","Low_pred","High_direction_actual","High_direction_pred","Low_direction_actual","Low_direction_pred"
+2021-09-30,"ETH",3050.6,3033.37,2941.63,2785.08,NA,NA,NA,NA
+2021-10-01,"ETH",3337.15,3052.13,2990.11,2912.51,"Higher High","Higher High","Higher Low","Lower Low"
+2021-10-03,"ETH",3428.24,3368.79,3325.03,2975.8,"Higher High","Higher High","Higher Low","Lower Low"
+2021-10-04,"ETH",3441.3,3472.85,3268.4,3261.82,"Higher High","Higher High","Lower Low","Lower Low"
+2021-10-05,"ETH",3548.19,3449.69,3364.77,3267.23,"Higher High","Higher High","Higher Low","Lower Low"
+2021-10-06,"ETH",3632.697,3575.57,3336.09,3347.2,"Higher High","Higher High","Lower Low","Lower Low"
+2021-10-07,"ETH",3655.02,3652.46,3505.9,3338.09,"Higher High","Higher High","Higher Low","Higher Low"
+2021-10-08,"ETH",NA,3674.04839853302,NA,3475.65449997692,NA,"Higher High",NA,"Lower Low"
