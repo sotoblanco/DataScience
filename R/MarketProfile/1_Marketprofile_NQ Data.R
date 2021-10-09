@@ -8,7 +8,7 @@ path_file_mp_funcitons <- file.path(dirname("C:/Users/Pastor/Desktop/stock_marke
 
 
 # futures instrument
-instrument = "NQ"
+instrument = "ES"
 
 source(file.path(path_file_mp_funcitons, "MarketProfile_Futures.R")) # store the functions for futures Marketprofile
 data_main <- sprintf("%s_continuous_UNadjusted_5min.txt", instrument)

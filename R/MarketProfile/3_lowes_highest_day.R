@@ -1,4 +1,4 @@
-instrument = "NQ"
+instrument = "ES"
 
 path_file_raw_data<- file.path(dirname(sprintf("C:/Users/Pastor/Dropbox/Pastor/data/MarketProfile_data/%s/..", instrument)))
 setwd(sprintf("C:/Users/Pastor/Dropbox/Pastor/data/MarketProfile_data/%s", instrument))
