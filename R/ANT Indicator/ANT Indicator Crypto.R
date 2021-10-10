@@ -10,14 +10,14 @@ library(tidyquant)
 
 
 # Read the weekly file
-setwd("C:/Users/Pastor/Dropbox/Pastor/data/crypto")
+setwd("C:/Users/Pastor/Dropbox/Pastor/data/crypto-active_5min")
 filelist = list.files(pattern = ".*.txt")
 crypto <- lapply(filelist, FUN=read.table, sep = ",", fill = TRUE)
 filelist = str_remove_all(filelist, "[-]" )
 names(crypto) <- filelist
 
 # Read the daily update file
-setwd("C:/Users/Pastor/Dropbox/Pastor/data/crypto-update")
+setwd("C:/Users/Pastor/Dropbox/Pastor/data/crypto-active_week-update_5-min")
 filelist_update = list.files(pattern = ".*.txt")
 crypto_update <- lapply(filelist_update, FUN=read.table, sep = ",", fill = TRUE)
 filelist_update = str_remove_all(filelist_update, "[-]" )
@@ -101,5 +101,11 @@ ant_indicator <- crypto_list %>% group_by(crypto_name) %>% summarise(day_month =
                                                           green = last(green),
                                                           close = last(Close))
 
+ant_indicator <- ant_indicator[with(ant_indicator, order(-momentum_total, -volume_mon, -price_mom)),]
+
 setwd("C:/Users/Pastor/Dropbox/Pastor/Power BI/Data")
 write.csv(crypto_list, "crypto_list.csv", row.names = FALSE)
+
+setwd("C:/Users/Pastor/Dropbox/Pastor/ANT Indicator")
+write.csv(ant_indicator, "ant_selection.csv", row.names = FALSE)
+
